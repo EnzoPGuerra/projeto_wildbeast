@@ -1,0 +1,432 @@
+
+:root{
+
+    --roxo_claro: #b07dfb;
+    --roxo_escuro: #8844ee;
+    --branco_sidenav: #fafbfc;
+
+
+}
+
+/* Grid Geral */
+
+.estrutura{
+
+    font-family: "Vollkorn", Georgia, serif;
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) 3fr 300px;
+    grid-template-areas:
+    "header  header  header"
+    "sidenav content anuncios"
+    "footer  footer  footer";
+
+}
+
+
+@media(max-width: 1200px){
+
+    .estrutura{
+
+        grid-template-areas:
+        "header header header"
+        "sidenav content content"
+        "sidenav anuncios anuncios"
+        "footer  footer footer";
+
+    }
+}
+
+@media(max-width: 760px){
+
+    .estrutura{
+
+        grid-template-areas:
+        "header header header"
+        "sidenav sidenav sidenav"
+        "content content content"
+        "anuncios anuncios anuncios"
+        "footer  footer footer";
+
+    }
+}
+
+
+
+
+/* Header*/
+
+.header{
+    grid-area: header;
+    background: linear-gradient(135deg, var(--roxo_escuro), var(--roxo_claro));
+    padding: 2em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+}
+
+.logo{
+
+    width: 200px;
+
+}
+
+.nav_header ul{
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav_itens a{
+
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    background: rgba(0,0,0,.1);
+    border-radius: 5px;
+    font-size: 1.125em;
+    transition: 0.1s;
+
+}
+
+.nav_itens + .nav_itens{
+
+    margin-left: 30px;
+
+}
+
+
+.nav_itens a:hover{
+
+    background: rgba(0,0,0,.5);
+}
+
+img{
+
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    border-radius: 5px;
+
+}
+
+@media(max-width: 760px){
+
+    .header{
+        grid-template-columns: auto;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        grid-gap: 20px
+    
+    }
+}
+
+
+/* Sidenav */
+
+.sidenav{
+    grid-area: sidenav;
+    background: var(--branco_sidenav);
+    padding: 30px;
+}
+
+.icones a{
+
+    display: block;
+    min-width: 60px;
+    max-width: 100px;
+    margin: 0 auto 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+    transition: 0.15s;
+    
+}
+
+.icones a:hover{
+
+
+    background: var(--roxo_claro)
+
+}
+
+@media(max-width: 760px){
+
+    .sidenav ul{
+
+        display: flex;
+    }
+
+    .icones{
+
+        flex: 1 0 60px;
+
+    }
+
+    .sidenav {
+
+        padding: 0 30px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        position: relative;
+
+    }
+
+    .icones a{
+
+        margin: 30px 30px 30px 0;
+
+    }
+
+    @keyframes seta {
+
+        from {
+            right: 30px;
+        }
+        to {
+            right: 30px;
+        }
+        
+    }
+
+    .sidenav::after{
+
+        content: "→";
+        position: absolute;
+        top: 5px;
+        right: 30px;
+        color: rgba(0, 0, 0, .3);
+        animation: seta .5s ease-in 0s infinite alternate;
+    }
+}
+
+/* Content */
+
+.content{
+    grid-area: content;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.ponta_a_ponta{
+
+    grid-column: 1/-1;
+
+}
+
+.imagem_linhas{
+
+    grid-row: span 2;
+    align-self: end;
+
+}
+
+.dois_lobos{
+
+    align-self: end;
+
+}
+
+@media (max-width: 600px) {
+
+    .content{
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        justify-items: center;
+    }
+
+    .content p, .destaque, h4{
+
+      text-align:center;
+      
+    }
+
+    
+}
+
+/* Estilos Content */
+
+.content .titulo{
+
+    color: var(--roxo_claro)
+
+}
+
+.content .titulo h1{
+
+    font-size: 3.75em;
+    font-weight: 700;
+    line-height: 1;
+
+}
+
+.content .titulo h4{
+
+    font-size: 0.875em;
+    font-style: italic;
+
+}
+
+.caracteristicas{
+
+    display: flex;
+    align-items: flex-start;
+    
+}
+
+.caracteristicas span{
+
+    display: block;
+
+}
+
+
+.caracteristicas > div {
+
+    background: linear-gradient(135deg, var(--roxo_escuro), var(--roxo_claro));
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 5px 5px 15px 0px rgb(44 44 44 / 15%);
+    }
+
+
+.caracteristicas > div:first-child{
+
+        margin-right: 30px;
+
+}
+
+.numero{
+
+    font-size: 3em;
+    line-height: 1;
+    margin: 10px auto;
+    color: var(--roxo_claro);
+    
+}
+
+.rotulo{
+
+    color: var(--roxo_claro);
+    background: white;
+    padding: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: relative;
+    top: 2px;
+}
+
+
+.content p{
+    font-size: 1.2em;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.content .destaque{
+
+    font-size: 0.875em;
+    color: var(--roxo_claro);
+    max-width: 16em;
+
+}
+
+
+.citacao, .lista_atributos{
+
+    align-self: start;
+    background: linear-gradient(135deg, var(--roxo_escuro), var(--roxo_claro));
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgb(44 44 44 / 15%);
+
+}
+
+.citacao p {
+
+    color: white;
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+
+}
+
+.lista_atributos{
+
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.lista_atributos li{
+
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.125em;
+    padding: 15px;
+}
+
+.lista_atributos li + li {
+
+
+    border-top: 2px solid var(--roxo_claro);
+
+}
+
+.informacoes {
+
+    display: block;
+        
+}
+
+.info_1{
+
+    margin-bottom: 2em;
+
+}
+
+/* Anuncios */
+
+.anuncios{
+    grid-area: anuncios;
+    background: #ffffff;
+    display: grid;
+    padding: 30px;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    align-content: start;
+    justify-content: space-around;
+}
+
+/* Footer */
+
+.footer{
+    grid-area: footer;
+    background: linear-gradient(135deg, var(--roxo_escuro), var(--roxo_claro));
+    padding: 30px;
+}
+
+.footer p {
+
+    color: white;
+    text-align: center;
+
+}
+
+ 
